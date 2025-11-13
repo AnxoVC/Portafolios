@@ -1,0 +1,294 @@
+/* Skill section enhancements */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+@media (max-width: 991px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+.skill-item {
+    padding: 30px 25px;
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 255, 213, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 213, 0.2);
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-icon::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(transparent,
+            rgba(0, 255, 213, 0.2),
+            transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.skill-item:hover .skill-icon::after {
+    animation: iconShine 1.5s;
+}
+
+@keyframes iconShine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px var(--accent-cyan-glow);
+    background: rgba(0, 255, 213, 0.1);
+}
+
+.skill-icon img {
+    max-width: 110%;
+    max-height: 110%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--accent-cyan-glow));
+}
+
+.skill-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.skill-title::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-cyber);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.skill-item:hover .skill-title::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.skill-percentage {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.skill-percentage span {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.skill-level {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-level-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: var(--gradient-cyber);
+    box-shadow: 0 0 10px var(--accent-cyan-glow);
+    position: relative;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
+}
+
+.skill-level-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: loadingShine 2s infinite;
+}
+
+@keyframes loadingShine {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(500%);
+    }
+}
+
+/* Timeline enhancements */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--accent-cyan-glow);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    z-index: 1;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-bg);
+    border: 2px solid var(--accent-cyan);
+    z-index: 1;
+    transition: var(--transition);
+    transform: scale(0);
+    transform-origin: center;
+    box-shadow: 0 0 0 4px rgba(0, 255, 213, 0.1);
+    opacity: 0;
+}
+
+.timeline-item.active::before {
+    transform: scale(1);
+    box-shadow: 0 0 10px var(--accent-cyan-glow);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+}
+
+.timeline-item::after {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 8px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+    z-index: 0;
+    transition: width 0.5s ease 0.3s;
+}
+
+.timeline-item.active::after {
+    width: 20px;
+}
+
+.timeline-content {
+    position: relative;
+    padding: 15px;
+    border: 1px solid rgba(0, 255, 213, 0.1);
+    border-radius: var(--border-radius);
+    background: rgba(21, 21, 37, 0.5);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--gradient-cyber);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 255, 213, 0.3);
+    background: rgba(21, 21, 37, 0.7);
+}
+
+.timeline-item:hover .timeline-content::before {
+    opacity: 1;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(0, 255, 213, 0.1);
+    color: var(--accent-cyan);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 213, 0.2);
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-item:hover .timeline-date {
+    background: rgba(0, 255, 213, 0.2);
+    box-shadow: 0 0 10px var(--accent-cyan-glow);
+}
