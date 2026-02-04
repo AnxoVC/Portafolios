@@ -2,7 +2,7 @@
 
 ## Ver Proyecto en Vivo
 Haz clic en el enlace para ver la terminal en acción:
-> [anxovc.github.io/Portafolio/](https://anxovc.github.io/Portafolio/)
+> [anxovc.github.io/Portafolio/](https://anxovc.github.io/Portafolios/)
 
 ---
 
