@@ -20,7 +20,7 @@ Haz clic en el enlace para ver la terminal en acción:
 
 ---
 
-## 📂 Estructura del Proyecto
+##  Estructura del Proyecto
 Tal como se muestra en el repositorio:
 
 ```text
